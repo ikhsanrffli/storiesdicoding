@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="view-transition" content="same-origin" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="/styles/main.css" />
+    <title>App</title>
+    <style>
+      .skip-link {
+        position: absolute;
+        top: -60px; /* Jauhkan dari pandangan */
+        left: 50%; /* Posisikan di tengah horizontal */
+        transform: translateX(-50%); /* Pusatkan */
+        background: #333; /* Warna gelap agar kontras */
+        color: white;
+        padding: 12px 20px; /* Perbesar area */
+        text-decoration: none;
+        border-radius: 0 0 8px 8px;
+        z-index: 10000;
+        font-weight: bold;
+      }
+      .skip-link:focus {
+        top: 0px; /* Muncul di atas */
+      }
+    </style>
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header>
+      <div class="main-header container">
+        <a class="brand-name" href="#/">Dicoding Story</a>
+        <nav id="navigation-drawer" class="navigation-drawer">
+          <ul id="nav-list" class="nav-list">
+            <li><a href="#/">Beranda</a></li>
+            <li><a href="#/story-list">Daftar Cerita</a></li>
+            <li><a href="#/add-story">Tambah Cerita</a></li>
+            <li><a href="#/login">Login</a></li>
+            <li><a href="#/register">Daftar</a></li>
+            <li><a href="#/about">About</a></li>
+          </ul>
+        </nav>
+        <button id="drawer-button" class="drawer-button">☰</button>      
+      </div>
+       
+    </header>
+    <main id="main-content" class="main-content"></main>
+
+    <footer>
+      <div class="container">
+        <p>&copy; 2025 Dicoding Story. Project Submission for Web Intermediate Class.</p>
+      </div>
+    </footer>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script type="module" src="/scripts/index.js"></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("/sw.js");
+        });
+      }
+    </script>
+     
+  </body>
+</html>
