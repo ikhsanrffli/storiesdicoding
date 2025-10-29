@@ -15,7 +15,7 @@ function requireAuth() {
 function loadView(viewName) {
   const mainContent = document.getElementById('main-content');
   if (!mainContent) {
-    console.error('Elemen #main-content tidak ditemukan di DOM.');
+    console.error('Elemen #main-content tidak ditemukan.');
     return;
   }
 
@@ -42,7 +42,7 @@ function loadView(viewName) {
         // 💨 Transisi Masuk
         mainContent.classList.remove('fade-out');
 
-        // Render konten ke #main-content
+        // Render hanya konten view, bukan template lengkap
         mainContent.innerHTML = html;
 
         // Re-bind event listener untuk navigasi
@@ -127,11 +127,13 @@ function loadView(viewName) {
           const logoutBtn = document.getElementById('logout-btn');
           if (logoutBtn) {
             logoutBtn.addEventListener('click', () => {
-              import('./auth.js').then(module => module.logout());
+              import('./auth.js').then(module => {
+                module.logout();
+              });
             });
           }
 
-          // 🔔 Inisialisasi notifikasi
+          // 🔔 Inisialisasi tombol notifikasi
           const notifSection = document.getElementById('notification-section');
           const notifBtn = document.getElementById('enable-notif-btn');
           const notifStatus = document.getElementById('notif-status');
